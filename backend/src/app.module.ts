@@ -7,13 +7,13 @@ import { Token } from './tokens/token.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'deepu',
-      password: 'password123',
-      database: 'token_launchpad',
+  url: process.env.DATABASE_URL,
+  autoLoadEntities: true,
+  synchronize: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
       entities: [Token],
-      synchronize: true, 
     }),
     TokensModule,
   ],
