@@ -4,7 +4,7 @@ The on-chain half of the Token Launchpad dApp: a Solidity factory contract that 
 
 ** Frontend Repo:** https://github.com/deepuallamsetty/token-launchpad-frontend
 ** Live App:** https://token-launchpad-frontend-two.vercel.app/dashboard
-** Contract (Sepolia):** [0xYourContractAddress](https://sepolia.etherscan.io/address/0xYourContractAddress)
+** Contract (Sepolia):** 0xcb1452d0a8584eb661067853ED1A42926862779d
 
 ---
 
