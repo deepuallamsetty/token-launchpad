@@ -1,66 +1,51 @@
-## Foundry
+#  Token Launchpad — Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+The on-chain half of the Token Launchpad dApp: a Solidity factory contract that lets anyone deploy a new ERC-20 token with a custom name, symbol, and supply.
 
-Foundry consists of:
+** Frontend Repo:** https://github.com/deepuallamsetty/token-launchpad-frontend
+** Live App:** https://token-launchpad-frontend-two.vercel.app/dashboard
+** Contract (Sepolia):** [0xYourContractAddress](https://sepolia.etherscan.io/address/0xYourContractAddress)
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+---
 
-## Documentation
+##  What's in This Repo
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```
+contracts/     → Solidity source (TokenFactory + ERC-20 template)
+test/          → Foundry test suite (unit + fuzz tests)
 ```
 
-### Test
+---
 
-```shell
-$ forge test
+##  Smart Contract
+
+A factory contract that lets anyone deploy a new ERC-20 token with a custom name, symbol, and supply, emitting a `TokenCreated` event on every deployment. The frontend reads this event directly to display created tokens — no backend needed.
+
+- Built and tested with **Foundry**
+- Full test coverage including fuzz tests
+- Deployed to Sepolia testnet
+
+```bash
+# Install dependencies
+forge install
+
+# Run tests
+forge test -vvv
+
+# Check coverage
+forge coverage
+
+# Deploy (example)
+forge script script/Deploy.s.sol --rpc-url $SEPOLIA_RPC_URL --broadcast --verify
 ```
 
-### Format
+---
 
-```shell
-$ forge fmt
-```
+##  What I Learned
 
-### Gas Snapshots
+- Writing and testing a factory contract pattern with Foundry, including fuzz testing
+- Emitting and structuring events so a frontend can reliably read on-chain history directly via Ethers.js
+- [Add 1 more genuine takeaway specific to a bug you actually hit]
 
-```shell
-$ forge snapshot
-```
 
-### Anvil
 
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
